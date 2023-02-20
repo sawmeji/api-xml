@@ -1,16 +1,19 @@
 package com.example.apixml.entity;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
 @Getter
 @Setter
+@Entity
 @JacksonXmlRootElement(localName = "customer")
 public class Customer {
     @Id

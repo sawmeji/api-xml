@@ -2,7 +2,11 @@ package com.example.apixml;
 
 import com.example.apixml.dao.CustomerDao;
 import com.example.apixml.entity.Customer;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +18,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class ApiXmlApplication {
     @Autowired
     private CustomerDao customerDao;
+
+    @Bean
+    public OpenAPI customOpenAPI(@Value("${app.description}")String appDescription,
+                                 @Value("${app.version}")String appVersion){
+        return new OpenAPI().info(new Info().title("Course Tracker API")
+                .version(appVersion)
+                .description(appDescription)
+                .termsOfService("http://swagger.io/terms/")
+                .license(new License().name("Apache 2.0")
+                        .url("http://springdoc.org"))
+        );
+    }
+
 
     public static void main(String[] args) {
         SpringApplication.run(ApiXmlApplication.class, args);
