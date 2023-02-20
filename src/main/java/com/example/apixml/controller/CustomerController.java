@@ -16,7 +16,7 @@ public class CustomerController {
     @Autowired
     private CustomerDao customerDao;
 
-    @PostMapping(value = "/customers", consumes = MediaType.APPLICATION_XML_VALUE)
+    @PostMapping(value = "/customers", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) throws Exception{
         Customer cus = customerDao.save(customer);
         return ResponseEntity
